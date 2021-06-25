@@ -1,6 +1,7 @@
 import sys
 import time
 import pygame
+import warnings
 import numpy as np
 import tkinter as tk
 from tkinter import messagebox
@@ -14,6 +15,8 @@ from algorithm import check_nilpotency
     Developer: Vedant Raghuwanshi, 118EE0705
 
 """
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 
 def main(size):

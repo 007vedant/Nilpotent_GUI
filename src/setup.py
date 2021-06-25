@@ -3,7 +3,10 @@ from cx_Freeze import setup, Executable
 
 # Dependencies are automatically detected, but it might need fine tuning.
 # "packages": ["os"] is used as example only
-build_exe_options = {"packages": ["pygame", "tkinter", "numpy"]}
+build_exe_options = {
+    "packages": ["pygame", "tkinter", "numpy"],
+    "include_msvcr": True,
+}
 
 # base="Win32GUI" should be used only for Windows GUI app
 base = None

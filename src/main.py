@@ -1,7 +1,9 @@
 import sys
+import warnings
 import tkinter as tk
-from tkinter import messagebox
 from gui import main
+from tkinter import messagebox
+
 
 """
     Project: Check if Matrix is Nilpotent
@@ -9,6 +11,8 @@ from gui import main
     Developer: Vedant Raghuwanshi (118EE0705)
 
 """
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 
 def create_gui_layout(win):
