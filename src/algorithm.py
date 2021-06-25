@@ -1,4 +1,4 @@
-import numpy as np
+from sympy import Matrix
 
 """
     Algorithm to find if the i/p matrix is nilpotent or not.
@@ -13,21 +13,24 @@ import numpy as np
 
 
 def check_nilpotency(matrix):
-    np_array = np.array(matrix, dtype=complex)
-    eigenval, eigenvec = np.linalg.eig(
-        np_array
-    )  # calculating eigenvalues of the matrix
+    sp_matrix = Matrix(matrix)
+    eigenvalues = sp_matrix.eigenvals()  # finding eigenvalues of the input matrix
 
-    # eigenval is array with all the eigen values of matrix
-    for x in eigenval:
-        if x != 0:  # if an eigenvalue is not 0, then matrix is not nilpotent
-            return eigenval, False
+    # eigenvalues is dictionary with eigen values of the matrix as keys and their multiplicity as dictionary values.
 
-    return eigenval, True  # if all the eigenvalues are 0. then matrix is nilpotent
+    for x in eigenvalues.keys():
+        if (
+            x != 0
+        ):  # if any value other than 0 is present in keys then matrix is NOT nilpotent
+            return eigenvalues, False
+
+    return eigenvalues, True  # matrix is nilpotent
 
 
 if __name__ == "__main__":
 
     size = int(input("Enter Matrix Size: "))
     matrix = [[input() for x in range(size)] for y in range(size)]
-    print(check_nilpotency(matrix))
+    eigvalues, isnilp = check_nilpotency(matrix)
+    print(isnilp)
+    print(eigvalues)

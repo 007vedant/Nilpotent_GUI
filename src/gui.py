@@ -2,7 +2,6 @@ import sys
 import time
 import pygame
 import warnings
-import numpy as np
 import tkinter as tk
 from tkinter import messagebox
 from algorithm import check_nilpotency
@@ -124,27 +123,8 @@ def main(size):
                     pygame.display.update()
                     pygame.time.delay(100)
 
-            try:
-                eigvals, isnilpotent = check_nilpotency(matrix)
-                return eigvals, isnilpotent
-                # matrix = np.array(matrix, dtype=complex)
-                # eigval, eigvec = np.linalg.eig(matrix)
-                # print(eigval)
-
-                # for x in eigval:
-                #     if x != 0:
-                #         return False
-
-                # return True
-
-            except np.linalg.LinAlgError:
-                base = tk.Tk()
-                base.geometry("50x50")
-                tk.messagebox.showinfo(
-                    "Error!",
-                    "Matrix cannot contain 'inf' value. Please set valid values.",
-                )
-                base.destroy()
+            eigvalues, isnilpotent = check_nilpotency(matrix)
+            return eigvalues, isnilpotent
 
     class Cube:
         rows = size
@@ -294,14 +274,14 @@ def main(size):
 
                     if event.key == pygame.K_SPACE:
                         try:
-                            eigvals, isnilpotent = grid.solve_gui()
+                            eigvalues, isnilpotent = grid.solve_gui()
                             if isnilpotent:
                                 popup_msg(
-                                    f"The I/P Matrix is NILPOTENT\n Eigven Values: {eigvals}"
+                                    f"The I/P Matrix is NILPOTENT\n Eigven Values: {eigvalues}"
                                 )
                             else:
                                 popup_msg(
-                                    f"The I/P Matrix is NOT NILPOTENT\n Eigen Values: {eigvals}"
+                                    f"The I/P Matrix is NOT NILPOTENT\n Eigen Values: {eigvalues}"
                                 )
 
                             # print("Over")
