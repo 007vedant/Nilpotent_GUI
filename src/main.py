@@ -7,7 +7,7 @@ from tkinter import messagebox
 
 """
     Project: Check if Matrix is Nilpotent
-    Course: Advanced Control Systems (EE2002)
+    Course: Advanced Control Systems (EE3302)
     Developer: Vedant Raghuwanshi (118EE0705)
 
 """
